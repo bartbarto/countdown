@@ -8,6 +8,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="dest/jquery.countdown.js"></script>
     <script type="text/javascript" src="jquery.fireworks.js"></script>
+    <script type="text/javascript" src="jquery.tubular.1.0.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="style.css" media="screen"> -->
     <style>
     * {
@@ -61,14 +62,17 @@
 </head>
 
 <body>
-    <div class="all">
+    <div class="all" id="video">
         <div class="container" style="text-align: center;">
             <div class="countdown styled"></div>
         </div>
     </div>
+    <div id="xx"></div>
     <script type="text/javascript">
+
+    var TO;
     $(function() {
-        var endDate = new Date('9 August 2015');
+        var endDate = new Date('8 August 2015');
 
         $('.countdown.simple').countdown({
             date: endDate
@@ -84,6 +88,30 @@
                   $('body').fireworks();
                 // }, 1000)
                 console.log("ended");
+
+                $('.countdown').fadeOut('fast');
+
+              $('#video').YTPlayer({
+                fitToBackground: true,
+                videoId: 'oHg5SJYRHA0'
+              });
+
+                var player = $('#video').data('ytPlayer').player;
+                // player.pauseVideo();
+                player.playVideo();
+
+
+
+                try{
+                  clearTimeout(TO)
+                }catch(e){
+                  console.log(e)
+                }
+
+                // player.addEventListener('onStateChange', function(data){
+                //   console.log("Player State Change", data);
+                // });
+
             }
         })
 
@@ -209,7 +237,7 @@
             flag--
         }
 
-        setTimeout(disco, 1)
+        TO = setTimeout(disco, 1)
     }
 
     </script>
