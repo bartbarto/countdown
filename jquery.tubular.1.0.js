@@ -260,7 +260,7 @@ if (typeof Object.create !== "function") {
      */
     onPlayerReady: function onPlayerReady(e) {
       if (this.options.mute) {
-        e.target.mute();
+        // e.target.mute();
       }
       e.target.playVideo();
     },
