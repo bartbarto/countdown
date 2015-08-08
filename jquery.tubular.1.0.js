@@ -79,7 +79,7 @@ if (typeof Object.create !== "function") {
       pauseOnScroll: false,
       fitToBackground: true,
       playerVars: {
-        modestbranding: 1,
+        modestbranding: 0,
         autoplay: 1,
         controls: 0,
         showinfo: 0,
