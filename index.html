@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="dest/jquery.countdown.js"></script>
+    <script type="text/javascript" src="jquery.fireworks.js"></script>
     <!-- <link rel="stylesheet" type="text/css" href="style.css" media="screen"> -->
     <style>
     * {
@@ -15,17 +16,18 @@
 
     body,
     html {
-
         background-size: 10%;
         width: 100%;
         height: 100%;
     }
-    .all{
-       background-image: url('poopie.png');
-       background-size: 10%;
-       width: 100%;
-      height: 100%;
+
+    .all {
+        background-image: url('poopie.png');
+        background-size: 10%;
+        width: 100%;
+        height: 100%;
     }
+
     .countStyle {
         position: absolute;
         text-align: center;
@@ -56,27 +58,41 @@
         }
     }
     </style>
+</head>
+
+<body>
+    <div class="all">
+        <div class="container" style="text-align: center;">
+            <div class="countdown styled"></div>
+        </div>
+    </div>
     <script type="text/javascript">
     $(function() {
-        var endDate = new Date('9 August 2015');
+        var endDate = new Date('8 August 2015 23:28');
 
         $('.countdown.simple').countdown({
             date: endDate
-        });
+        })
 
         $('.countdown.styled').countdown({
             date: endDate,
             render: function(data) {
                 $(this.el).html("<div class='countStyle'><span class='1'>" + this.leadingZeros(data.years, 1) + " Jaars&nbsp;&nbsp;&nbsp;</span><span class='2'>" + this.leadingZeros(data.days, 1) + " Dags&nbsp;&nbsp;&nbsp;</span><span class='3'>" + this.leadingZeros(data.hours, 2) + " Uurs&nbsp;&nbsp;&nbsp;</span><span class='4'>" + this.leadingZeros(data.min, 2) + " Minuuts&nbsp;&nbsp;&nbsp;</span><span class='5'>" + this.leadingZeros(data.sec, 2) + " Secondes</span></div>");
+            },
+            onEnd: function(data) {
+                // setInterval(function(){
+                  $('body').fireworks();
+                // }, 1000)
+                console.log("ended");
             }
-        });
+        })
 
         // spectrum();
         disco();
     });
 
     function spectrum() {
-      console.log('lo');
+        console.log('lo');
         var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
         $('body').animate({
             backgroundColor: hue
@@ -195,15 +211,8 @@
 
         setTimeout(disco, 1)
     }
-    </script>
-</head>
 
-<body>
-  <div class="all">
-    <div class="container" style="text-align: center;">
-        <div class="countdown styled"></div>
-    </div>
-  </div>
+    </script>
 </body>
 
 </html>
