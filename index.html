@@ -1,75 +1,209 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Countdown</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="dest/jquery.countdown.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
-
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" media="screen"> -->
     <style>
-    * { Box-sizing: Border-box }
-    body, html{
-      background-image: url('poop.png');
-      background-size: 10%;
+    * {
+        Box-sizing: Border-box
     }
-      .countStyle{
+
+    body,
+    html {
+
+        background-size: 10%;
+        width: 100%;
+        height: 100%;
+    }
+    .all{
+       background-image: url('poopie.png');
+       background-size: 10%;
+       width: 100%;
+      height: 100%;
+    }
+    .countStyle {
         position: absolute;
         text-align: center;
         top: 40%;
         left: 0;
         margin-top: -30pt;
         font-weight: 800;
-
-        background: rgba(255,255,255,0.95);
-
+        background: rgba(255, 255, 255, 0.95);
         padding-top: 5%;
         padding-bottom: 5%;
-
         width: 100%;
-
         font-size: 30pt;
-
         box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.3);
         -moz-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.3);
         -webkit-box-shadow: 0px 0px 10px 4px rgba(119, 119, 119, 0.3);
-      }
+    }
 
-      @media all  and (max-width: 1024px){
-      span{
-        width: 100%;
-        text-align: center;
-        float: left;
-        clear: both;
-        /*color: red;*/
-      }
-      span:before{
-        content('\n')
-      }
+    @media all and (max-width: 1024px) {
+        span {
+            width: 100%;
+            text-align: center;
+            float: left;
+            clear: both;
+            /*color: red;*/
+        }
+        span:before {
+            content: '';
+        }
     }
     </style>
-
     <script type="text/javascript">
-      $(function() {
+    $(function() {
         var endDate = new Date('9 August 2015');
 
-        $('.countdown.simple').countdown({ date: endDate });
-
-        $('.countdown.styled').countdown({
-          date: endDate,
-          render: function(data) {
-            $(this.el).html("<div class='countStyle'><span class='1'>" + this.leadingZeros(data.years, 1) + " Jaars&nbsp;&nbsp;&nbsp;</span><span class='2'>" + this.leadingZeros(data.days, 1) + " Dags&nbsp;&nbsp;&nbsp;</span><span class='3'>" + this.leadingZeros(data.hours, 2) + " Uurs&nbsp;&nbsp;&nbsp;</span><span class='4'>" + this.leadingZeros(data.min, 2) + " Minuuts&nbsp;&nbsp;&nbsp;</span><span class='5'>" + this.leadingZeros(data.sec, 2) + " Secondes</span></div>");
-          }
+        $('.countdown.simple').countdown({
+            date: endDate
         });
 
-      });
+        $('.countdown.styled').countdown({
+            date: endDate,
+            render: function(data) {
+                $(this.el).html("<div class='countStyle'><span class='1'>" + this.leadingZeros(data.years, 1) + " Jaars&nbsp;&nbsp;&nbsp;</span><span class='2'>" + this.leadingZeros(data.days, 1) + " Dags&nbsp;&nbsp;&nbsp;</span><span class='3'>" + this.leadingZeros(data.hours, 2) + " Uurs&nbsp;&nbsp;&nbsp;</span><span class='4'>" + this.leadingZeros(data.min, 2) + " Minuuts&nbsp;&nbsp;&nbsp;</span><span class='5'>" + this.leadingZeros(data.sec, 2) + " Secondes</span></div>");
+            }
+        });
+
+        // spectrum();
+        disco();
+    });
+
+    function spectrum() {
+      console.log('lo');
+        var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+        $('body').animate({
+            backgroundColor: hue
+        }, 1000);
+
+        setTimeout(spectrum, 10)
+            // spectrum();
+    }
+
+    r = 255;
+    g = 255;
+    b = 255;
+    flag = 0;
+    t = new Array;
+    o = new Array;
+    d = new Array;
+
+    function hex(a, c) {
+        t[a] = Math.floor(c / 16)
+        o[a] = c % 16
+        switch (t[a]) {
+            case 10:
+                t[a] = 'A';
+                break;
+            case 11:
+                t[a] = 'B';
+                break;
+            case 12:
+                t[a] = 'C';
+                break;
+            case 13:
+                t[a] = 'D';
+                break;
+            case 14:
+                t[a] = 'E';
+                break;
+            case 15:
+                t[a] = 'F';
+                break;
+            default:
+                break;
+        }
+        switch (o[a]) {
+            case 10:
+                o[a] = 'A';
+                break;
+            case 11:
+                o[a] = 'B';
+                break;
+            case 12:
+                o[a] = 'C';
+                break;
+            case 13:
+                o[a] = 'D';
+                break;
+            case 14:
+                o[a] = 'E';
+                break;
+            case 15:
+                o[a] = 'F';
+                break;
+            default:
+                break;
+        }
+    }
+
+    function ran(a, c) {
+        if ((Math.random() > 2 / 3 || c == 0) && c < 255) {
+            c++
+            d[a] = 2;
+        } else {
+            if ((Math.random() <= 1 / 2 || c == 255) && c > 0) {
+                c--
+                d[a] = 1;
+            } else d[a] = 0;
+        }
+        return c
+    }
+
+    function do_it(a, c) {
+        if ((d[a] == 2 && c < 255) || c == 0) {
+            c++
+            d[a] = 2
+        } else
+        if ((d[a] == 1 && c > 0) || c == 255) {
+            c--;
+            d[a] = 1;
+        }
+        if (a == 3) {
+            if (d[1] == 0 && d[2] == 0 && d[3] == 0)
+                flag = 1
+        }
+        return c
+    }
+
+    function disco() {
+        if (flag == 0) {
+            r = ran(1, r);
+            g = ran(2, g);
+            b = ran(3, b);
+            hex(1, r)
+            hex(2, g)
+            hex(3, b)
+            document.body.style.background = "#" + t[1] + o[1] + t[2] + o[2] + t[3] + o[3]
+            flag = 50
+        } else {
+            r = do_it(1, r)
+            g = do_it(2, g)
+            b = do_it(3, b)
+            hex(1, r)
+            hex(2, g)
+            hex(3, b)
+            document.body.style.background = "#" + t[1] + o[1] + t[2] + o[2] + t[3] + o[3]
+            flag--
+        }
+
+        setTimeout(disco, 1)
+    }
     </script>
-  </head>
-  <body>
+</head>
+
+<body>
+  <div class="all">
     <div class="container" style="text-align: center;">
-      <div class="countdown styled"></div>
+        <div class="countdown styled"></div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
