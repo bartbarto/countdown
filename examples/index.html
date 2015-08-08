@@ -10,7 +10,7 @@
 
     <script type="text/javascript">
       $(function() {
-        var endDate = "June 7, 2087 15:03:25";
+        var endDate = "August 9, 2015 15:03:25";
 
         $('.countdown.simple').countdown({ date: endDate });
 
@@ -43,14 +43,14 @@
         var diff_ms = timeHere.getTime() - timeThere.getTime();
         // Get the rounded difference in seconds
         var diff_s = diff_ms / 1000 | 0;
-        
+
         var notice = [];
         notice.push('Server time: ' + timeThere.toDateString() + ' ' + timeThere.toTimeString());
         notice.push('Your time: ' + timeHere.toDateString() + ' ' + timeHere.toTimeString());
         notice.push('Time difference: ' + diff_s + ' seconds (' + diff_ms + ' milliseconds to be precise). Your time is a bit behind.');
-        
+
         $('.offset-notice').html(notice.join('<br />'));
-        
+
         $('.offset-server .countdown').countdown({
           date: endTimeDiff,
           offset: diff_s * 1000,
@@ -58,7 +58,7 @@
             $(this.el).addClass('ended');
           }
         });
-        
+
         $('.offset-client .countdown').countdown({
           date: endTimeDiff,
           onEnd: function() {
@@ -82,13 +82,13 @@
       <h2>Countdown with callback</h2>
       <p>Click on the green box to reset the counter to 10 sec.</p>
       <div class="countdown callback"></div>
-      
+
       <h2>Countdown with offset</h2>
       <p class="offset-notice"></p>
-      <div class="offset-server">Countdown according to server time: 
+      <div class="offset-server">Countdown according to server time:
         <div class="countdown offset"></div>
       </div>
-      <div class="offset-client">Countdown according to your time: 
+      <div class="offset-client">Countdown according to your time:
         <div class="countdown offset"></div>
       </div>
     </div>
